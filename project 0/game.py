@@ -4,11 +4,11 @@ def random_predict(number:int=1) -> int:
     Args: number(int, optional): the hidden number. Defaults to 1.
     Returns: int: number of attempts"""
     count = 0
-    x = 1
-    y = 101
+    x = 1 #low bound of the interval
+    y = 101 #high bound of the interval
 
     predict_number = np.random.randint(x, y)
-    if number == predict_number:
+    if number == predict_number: #guessed right on the first try
         count += 1
     else:
         while number != predict_number:
@@ -32,8 +32,8 @@ def score_game(random_predict) -> int:
     np.random.seed(1)
     random_array = np.random.randint(1, 101, size=1000)
     for number in random_array:
-        count_ls.append(random_predict(number))
-    score = int(np.mean(count_ls))
+        count_ls.append(random_predict(number)) #the list of the number of attempts
+    score = int(np.mean(count_ls)) #the average value in the list of the number of attempts
     print(f'Average number of guesses: {score} attempts')
     return (score)
 
